@@ -9,6 +9,8 @@ import UserScreen from "./Screens/UserScreen/UserScreen";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserProfile from "./Screens/UserScreen/UserProfile";
 import SignUp from "./Components/SignUpScreen/SignUpScreen";
+import Profile from "./Components/UpdateUserProfile/UpdateUserProfile";
+import Delete from "./Screens/DeleteRequest/Delete";
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<UserScreen />} />
           <Route path="/profile/:id" element={<UserProfile />} /> */}
-          <Route path="/" element={<SignUp />} />
+          <Route path="/Delete" element={<Delete />} />
+          {/* <Route path="/" element={<SignUp />} />
+          <Route path="/profile" element={<Profile />} /> */}
         </Routes>
       </BrowserRouter>
       {/* <Product /> */}
