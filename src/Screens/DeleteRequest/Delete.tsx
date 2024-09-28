@@ -5,6 +5,7 @@ import { MdEdit } from "react-icons/md";
 
 const Delete = () => {
   const [data, setData] = useState([]);
+  const [popUpMessage, setPopUpMessage] = useState(false);
   console.log(data);
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +17,22 @@ const Delete = () => {
     };
     fetchData();
   }, []);
-
+  const handleDelete = (_id: any) => {
+    axios
+      .delete(
+        `https://fullstack-student-backend.onrender.com/api/auth/delete/${_id}`
+      )
+      .then((response: any) => {
+        window.location.reload();
+        alert("Delete successful");
+      })
+      .catch((error: any) => {
+        alert("Failed to delete");
+      });
+  };
+  const handleModal = () => {
+    setPopUpMessage(true);
+  };
   return (
     <div>
       <table>
@@ -39,8 +55,8 @@ const Delete = () => {
                 <td>
                   <MdEdit />
                 </td>
-                <td>
-                  <MdDelete style={{ color: "red" }} />
+                <td onClick={() => handleDelete(list?._id)}>
+                  <MdDelete style={{ color: "red", cursor: "pointer" }} />
                 </td>
               </tr>
             </>
